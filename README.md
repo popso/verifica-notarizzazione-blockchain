@@ -36,6 +36,7 @@ Figura 0- Schema Merkle Tree
 Il servizio fornisce tramite la ricevuta tutte le informazioni necessarie alla verifica autonoma dell'avvenuta notarizzazione. La ricevuta è divisa in cinque sezioni, ogni sezione contiene una specifica serie di dati:
 
 *	Dato utente notarizzato – contiene i dati in chiaro dell’utente, da cui si genera un dato offuscato, la hash, dalla quale è impossibile risalire ai dati originali);
+
 Esempio:
 
 ``` 
@@ -44,20 +45,22 @@ DescrizioneProdotto:"TUTTO TONDO - ARCA ASSICURAZIONI",DataConsenso:"25/05/2018"
 ```
 
 *	Dati di notarizzazione – contiene i dati relativi alla transazione utilizzata per notarizzare l’evento sulla blockchain;
+
 Esempio:
 ``` 
 {"blockchain":"Bitcoin-mainnet","transactionSentTime":1527501611054,
 "transactionId":"0aaba5f8a89ddd24dc2093ed3adc58cd9ac3edd67c72ea3bd81d25dc28e21a3c","status":"CONFIRMED"}
 ```
 
-*	Dati del Merkle Tree – contiene alcune delle informazioni necessarie a ricostruire il dato scritto in blockchain
+*	Dati del Merkle Tree – contiene alcune delle informazioni necessarie a ricostruire il dato scritto in blockchain;
+
 Esempio:
 ``` 
 {"merkle":{"root":"532ebb192f9d5a86536d7002db6dc635c8536f453d133b45197aebd4e89752bf","index":1,
 "hash":"0dece4ebef7d3afbe5e2ef0208a52ca46c821dd1e1f8231c00262bb8d23dbc0e"}} 
 ```
 
-*	Siblings 1 - Questa è la prima serie di dati (detti siblings), i quali consistono negli elementi da combinare all’hash del tuo dato allo scopo di ottenere il merkle root (dato scritto in blockchain)
+*	Siblings 1 - Questa è la prima serie di dati (detti siblings), i quali consistono negli elementi da combinare all’hash del tuo dato allo scopo di ottenere il merkle root (dato scritto in blockchain);
 
 Esempio:
 ``` 
@@ -66,7 +69,7 @@ Esempio:
 "aa21611d9bef73cd8283d4b40a7338e21f0a6cbbd2d2dfdf9eba752e21e17b60"]}
 ```
 
-•	Siblings 2 - Questa è la seconda serie di dati, i quali consistono (in modo identico a quanto sopra) negli elementi da combinare all’hash del tuo dato allo scopo di ottenere il merkle root (dato scritto in blockchain)
+*	Siblings 2 - Questa è la seconda serie di dati, i quali consistono (in modo identico a quanto sopra) negli elementi da combinare all’hash del tuo dato allo scopo di ottenere il merkle root (dato scritto in blockchain)
 **N.B.** La sezione Sibilings 2 potrebbe **non** contenere alcun hash nel caso di alberi di dimensione ridotta.
 
 Esempio:
@@ -99,6 +102,7 @@ La seconda cosa che devi verificare è che il Merkle Root sia effettivamente il 
 1. Concatena l’hash dei dati di notarizzazione con quelli del primo sibling secondo l’ordine indicato dal parametro **index**, come indicato nel seguente esempio:
    - se index è **pari** (mod(index)=0), allora la stringa hash va posta prima della stringa sibling (hash+sibling);
    - se index è **dispari** (mod(index)>0), allora la stringa hash va posta dopo la stringa sibling (sibling+hash);
+
 **Applica l’operazione di hashing al risultato della concatenazione**
 ![img5](./images/figura-1-sha256-sibling+hash.png)   
 Figura 1 - hash(sibling+hash)
