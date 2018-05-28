@@ -8,7 +8,7 @@
 Con questo documento vogliamo spiegarti come verificare autonomamente la correttezza e la veridicità dei dati presenti sulla tua ricevuta di notarizzazione.
 Banca Popolare di Sondrio ti garantisce che i dati siano correttamente scritti sulla blockchain (un registro aperto e distribuito che può memorizzare le transazioni tra due parti in modo sicuro, verificabile e permanente) ma, con delle competenze informatiche di base, puoi provare anche tu ad effettuare la verifica da solo.
 
-Tutti i passi spiegati in questa guida sono implementati in una **[pagina di verifica automatica](https://gianpaolo-m.github.io/verifica-notarizzazione-blockchain/)** nella quale si può caricare la ricevuta per la verifica.
+Tutti i passi spiegati in questa guida sono implementati in una **[pagina di verifica automatica](https://popso.github.io/verifica-notarizzazione-blockchain/)** nella quale si può caricare la ricevuta per la verifica.
  
 
 ## 2	Cosa verificare?
